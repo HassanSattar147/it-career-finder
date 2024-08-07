@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Choice Questionnaire</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Career Choice Questionnaire</h1>
+      <form id="questionnaire-form">
+        <div class="question">
+          <label>1. Problem-Solving Preference</label>
+          <select name="question1">
+            <option value="A">
+              A. I enjoy solving puzzles and logical challenges.
+            </option>
+            <option value="B">
+              B. I like finding creative solutions to visual or design problems.
+            </option>
+            <option value="C">
+              C. I’m excited by visual storytelling and creating content that
+              engages viewers.
+            </option>
+            <option value="D">
+              D. I am interested in strategizing and analyzing data to achieve
+              specific goals.
+            </option>
+            <option value="E">
+              E. I love writing and expressing ideas clearly and persuasively.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>2. Creative Expression</label>
+          <select name="question2">
+            <option value="A">
+              A. I prefer structured tasks and logical thinking over creative
+              expression.
+            </option>
+            <option value="B">
+              B. I thrive in environments where I can design and create visually
+              appealing products.
+            </option>
+            <option value="C">
+              C. I enjoy bringing stories to life through visuals and motion.
+            </option>
+            <option value="D">
+              D. I like crafting engaging and strategic content for social media
+              and advertising.
+            </option>
+            <option value="E">
+              E. I excel in creating written content that informs or entertains.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>3. Technical vs. Creative Focus</label>
+          <select name="question3">
+            <option value="A">
+              A. I’m more interested in technical and systematic work.
+            </option>
+            <option value="B">
+              B. I prefer balancing technical skills with creative design.
+            </option>
+            <option value="C">
+              C. I’m drawn to combining creative ideas with technical skills,
+              like animation or video editing.
+            </option>
+            <option value="D">
+              D. I enjoy analyzing performance data and strategizing for
+              improvements.
+            </option>
+            <option value="E">
+              E. I focus on using creativity in writing and content creation.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>4. User Interaction and Empathy</label>
+          <select name="question4">
+            <option value="A">
+              A. I am more interested in behind-the-scenes problem-solving than
+              user interaction.
+            </option>
+            <option value="B">
+              B. I enjoy understanding and designing for user needs and
+              experiences.
+            </option>
+            <option value="C">
+              C. I like connecting with audiences through engaging video and
+              animation content.
+            </option>
+            <option value="D">
+              D. I’m interested in understanding audience behavior and crafting
+              strategies based on that.
+            </option>
+            <option value="E">
+              E. I find satisfaction in creating content that resonates with and
+              engages readers.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>5. Project Type Preference</label>
+          <select name="question5">
+            <option value="A">
+              A. I prefer working on coding projects, debugging, and optimizing
+              systems.
+            </option>
+            <option value="B">
+              B. I enjoy working on visual design projects, creating user
+              interfaces, and improving user experiences.
+            </option>
+            <option value="C">
+              C. I am excited by projects involving video production, editing,
+              and animation.
+            </option>
+            <option value="D">
+              D. I am drawn to managing and analyzing social media campaigns and
+              advertisements.
+            </option>
+            <option value="E">
+              E. I like working on writing projects, including articles, blogs,
+              and marketing copy.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>6. Work Environment</label>
+          <select name="question6">
+            <option value="A">
+              A. I prefer a technical and problem-solving-focused environment.
+            </option>
+            <option value="B">
+              B. I enjoy working in creative design environments with a focus on
+              aesthetics and user experience.
+            </option>
+            <option value="C">
+              C. I thrive in dynamic environments where I can work on visual
+              media and animation.
+            </option>
+            <option value="D">
+              D. I like environments where strategic planning and data analysis
+              are key.
+            </option>
+            <option value="E">
+              E. I excel in environments that allow for creative writing and
+              content creation.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>7. Interest in Analytics and Data</label>
+          <select name="question7">
+            <option value="A">
+              A. I am very interested in working with data and algorithms.
+            </option>
+            <option value="B">
+              B. I am less interested in data and more focused on design and
+              aesthetics.
+            </option>
+            <option value="C">
+              C. I use data to inform creative decisions but am primarily
+              focused on visual content.
+            </option>
+            <option value="D">
+              D. I am interested in analyzing data to measure and optimize
+              performance.
+            </option>
+            <option value="E">
+              E. I use data to inform content strategies but focus mainly on
+              writing.
+            </option>
+          </select>
+        </div>
+        <div class="question">
+          <label>8. Long-Term Career Goals</label>
+          <select name="question8">
+            <option value="A">
+              A. I aim to become an expert in coding and software development.
+            </option>
+            <option value="B">
+              B. I aspire to design compelling and user-friendly interfaces and
+              experiences.
+            </option>
+            <option value="C">
+              C. I want to work in the creative field of video production and
+              animation.
+            </option>
+            <option value="D">
+              D. I aim to specialize in social media and advertising strategies.
+            </option>
+            <option value="E">
+              E. I want to become a skilled content writer and creator.
+            </option>
+          </select>
+        </div>
+        <button type="button" onclick="calculateResult()">Submit</button>
+      </form>
+      <div id="result" class="result"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
