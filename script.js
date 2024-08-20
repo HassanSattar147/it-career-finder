@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Generate report
     const reportSection = document.getElementById('report');
+    reportSection.classList.remove('hidden');
     reportSection.innerHTML = `
       <h2>Assessment Report</h2>
       <p><strong>Overall Cognitive Profile:</strong></p>
