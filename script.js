@@ -1,103 +1,106 @@
 const questions = [
-  "I feel confident when breaking down complex problems into smaller, manageable parts.",
-  "I am comfortable with learning new technologies or tools quickly when required.",
-  "When faced with a challenging issue, I approach it with a systematic and methodical mindset.",
-  "I regularly seek out new trends and updates in my field to stay informed.",
-  "I consider user feedback to be a crucial part of my design process.",
-  "I use specific strategies to ensure my designs are user-friendly and intuitive.",
-  "I follow best practices to make sure my designs are accessible to all users.",
-  "I have a set system to keep my projects organized and manage multiple tasks effectively.",
-  "I am open to receiving and acting on criticism regarding my design work.",
-  "I have a defined process for creating visually appealing graphics that align with the project goals.",
-  "I approach creative challenges with a range of problem-solving techniques.",
-  "I use effective strategies to prioritize tasks and manage my time efficiently.",
-  "I value collaboration and actively engage with others in the creative process.",
-  "I manage tight deadlines and high-pressure situations with effective time management techniques.",
-  "I analyze data from social media campaigns to make informed decisions and improvements.",
-  "I balance creativity with brand guidelines to produce engaging content.",
-  "I ensure that my content remains engaging and relevant to the intended audience.",
-  "I employ thorough research methods to create high-quality content.",
-  "I adapt my writing style to cater to different audiences and platforms effectively.",
-  "I use specific metrics to measure the success of my social media and advertising campaigns.",
+  "I am comfortable breaking down complex problems into smaller, manageable parts.",
+  "I stay informed about the latest developments and trends in my field.",
+  "I can quickly adapt to new tools or technologies when required.",
+  "I effectively manage my time when working on multiple projects.",
+  "I value and incorporate feedback into my work process.",
+  "I simplify complex processes to make them more efficient.",
+  "I keep myself organized and focused on my tasks.",
+  "I ensure my work meets high-quality standards.",
+  "I handle tight deadlines effectively without compromising on quality.",
+  "I am proactive in learning new skills or acquiring new knowledge.",
+  "I prioritize tasks based on their importance and deadlines.",
+  "I resolve conflicts or disagreements within a team constructively.",
+  "I successfully manage challenging projects by using effective strategies.",
+  "I maintain motivation and productivity during long-term projects.",
+  "I balance creativity with practical constraints in my work.",
+  "I ensure my work aligns with the overall goals of the project or organization.",
+  "I handle criticism or feedback on my work constructively.",
+  "I make difficult decisions based on thorough analysis and evaluation.",
+  "I collaborate effectively with team members who have different viewpoints.",
+  "I measure the success of my projects or tasks using clear criteria."
 ];
 
-const fieldSuggestions = {
-  Programming: "You may excel in programming and software development roles.",
-  "UI/UX Design":
-    "You might find UI/UX design roles suited to your skills in empathy and user-focused design.",
-  "Graphic Design":
-    "Consider roles in graphic design where your creativity and visual skills can shine.",
-  "Video Production":
-    "Your skills may align well with video production and animation roles.",
-  "Social Media Management":
-    "Roles in social media and digital marketing could be a good fit for your data-driven and creative skills.",
-  "Content Writing":
-    "Content writing and editing might suit your ability to craft engaging and relevant content.",
-};
-
-function generateReport(responses) {
-  // Simple analysis example: count average score
-  const averageScore =
-    Object.values(responses).reduce((sum, value) => sum + parseInt(value), 0) /
-    questions.length;
-
-  let cognitiveProfile = "";
-  let keyTraits = "";
-  let suggestedField = "";
-
-  // Simple example logic for cognitive profile and key traits
-  if (averageScore > 4) {
-    cognitiveProfile = "High Confidence and Creativity";
-    keyTraits =
-      "You exhibit strong confidence and creativity in your approach.";
-    suggestedField = fieldSuggestions["Graphic Design"];
-  } else if (averageScore > 3) {
-    cognitiveProfile = "Moderate Skill and Adaptability";
-    keyTraits = "You show good skill and adaptability in various scenarios.";
-    suggestedField = fieldSuggestions["Content Writing"];
-  } else {
-    cognitiveProfile = "Needs Improvement";
-    keyTraits = "There may be areas where further development is needed.";
-    suggestedField = fieldSuggestions["Programming"];
-  }
-
-  document.getElementById(
-    "cognitive-profile"
-  ).innerText = `Cognitive Profile: ${cognitiveProfile}`;
-  document.getElementById("key-traits").innerText = `Key Traits: ${keyTraits}`;
-  document.getElementById(
-    "suggested-field"
-  ).innerText = `Suggested Field: ${suggestedField}`;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("questionnaire-form");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('questionnaire-form');
 
   questions.forEach((question, index) => {
-    const questionElement = document.createElement("div");
-    questionElement.classList.add("question");
+    const questionElement = document.createElement('div');
+    questionElement.classList.add('question');
     questionElement.innerHTML = `
-          <label>${index + 1}. ${question}</label>
-          <div class="radio-options">
-            <label><input type="radio" name="q${index}" value="1"> Strongly Disagree</label>
-            <label><input type="radio" name="q${index}" value="2"> Disagree</label>
-            <label><input type="radio" name="q${index}" value="3"> Neutral</label>
-            <label><input type="radio" name="q${index}" value="4"> Agree</label>
-            <label><input type="radio" name="q${index}" value="5"> Strongly Agree</label>
-          </div>
-      `;
+      <label>${index + 1}. ${question}</label>
+      <div class="radio-options">
+        <label><input type="radio" name="q${index}" value="1"> Strongly Disagree</label>
+        <label><input type="radio" name="q${index}" value="2"> Disagree</label>
+        <label><input type="radio" name="q${index}" value="3"> Neutral</label>
+        <label><input type="radio" name="q${index}" value="4"> Agree</label>
+        <label><input type="radio" name="q${index}" value="5"> Strongly Agree</label>
+      </div>
+    `;
     form.appendChild(questionElement);
   });
 
-  document.getElementById("submit-btn").addEventListener("click", () => {
+  document.getElementById('submit-btn').addEventListener('click', () => {
     const formData = new FormData(form);
     const responses = {};
     for (const [key, value] of formData.entries()) {
-      responses[key] = value;
+      responses[key] = parseInt(value, 10);
     }
-    console.log("Responses:", responses);
+    console.log('Responses:', responses);
 
-    generateReport(responses);
-    document.getElementById("report").classList.remove("hidden");
+    // Calculate category scores
+    const categories = {
+      problemSolving: [0, 1, 2],
+      adaptability: [3, 4, 5],
+      organization: [6, 7, 8],
+      creativity: [9, 10, 11],
+      feedbackHandling: [12, 13, 14],
+      motivation: [15, 16],
+      decisionMaking: [17],
+      collaboration: [18],
+      successMeasurement: [19]
+    };
+
+    const scores = {};
+    for (const [category, indices] of Object.entries(categories)) {
+      scores[category] = indices.reduce((sum, index) => sum + (responses[`q${index}`] || 0), 0) / indices.length;
+    }
+
+    console.log('Category Scores:', scores);
+
+    // Determine suggested field or role
+    const roleSuggestions = {
+      creativeDesign: scores.creativity > 4,
+      projectManagement: scores.organization > 4 && scores.motivation > 4,
+      strategicPlanning: scores.problemSolving > 4 && scores.decisionMaking > 4,
+      teamLeadership: scores.collaboration > 4 && scores.feedbackHandling > 4
+    };
+
+    let suggestedRole = 'No specific role identified';
+    for (const [role, condition] of Object.entries(roleSuggestions)) {
+      if (condition) {
+        suggestedRole = role;
+        break;
+      }
+    }
+
+    // Generate report
+    const reportSection = document.getElementById('report');
+    reportSection.innerHTML = `
+      <h2>Assessment Report</h2>
+      <p><strong>Overall Cognitive Profile:</strong></p>
+      <ul>
+        <li><strong>Problem-Solving:</strong> ${scores.problemSolving.toFixed(2)}</li>
+        <li><strong>Adaptability:</strong> ${scores.adaptability.toFixed(2)}</li>
+        <li><strong>Organization:</strong> ${scores.organization.toFixed(2)}</li>
+        <li><strong>Creativity:</strong> ${scores.creativity.toFixed(2)}</li>
+        <li><strong>Feedback Handling:</strong> ${scores.feedbackHandling.toFixed(2)}</li>
+        <li><strong>Motivation:</strong> ${scores.motivation.toFixed(2)}</li>
+        <li><strong>Decision Making:</strong> ${scores.decisionMaking.toFixed(2)}</li>
+        <li><strong>Collaboration:</strong> ${scores.collaboration.toFixed(2)}</li>
+        <li><strong>Success Measurement:</strong> ${scores.successMeasurement.toFixed(2)}</li>
+      </ul>
+      <p><strong>Suggested Field or Role:</strong> ${suggestedRole}</p>
+    `;
   });
 });
