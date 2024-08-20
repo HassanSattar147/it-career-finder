@@ -1,17 +1,18 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f4f4f9;
   margin: 0;
-  padding: 0;
+  padding: 40px 0;
 }
 
 .container {
+  width: 80%;
   max-width: 800px;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
+  background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 h1 {
@@ -19,54 +20,123 @@ h1 {
   color: #333;
 }
 
-h3 {
-  text-align: center;
-  color: #007bff;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 .question {
   margin-bottom: 20px;
 }
 
+/*  */
+/* General styling for radio options container */
+.radio-options {
+  display: flex;
+  flex-direction: row; /* Align options horizontally */
+  gap: 10px; /* Space between options */
+  margin-top: 10px;
+}
+
+/* Styling for each radio button label */
+.radio-options > label {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center text in the label */
+  user-select: none;
+  color: #aaa;
+}
+
+/* Hover effect for radio options */
+.radio-options > label:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific colors for each radio option */
+.radio-options > label:nth-child(1) {
+  background-color: #e5737380; /* Coral Red */
+}
+
+.radio-options > label:nth-child(2) {
+  background-color: #ffb74d80; /* Saffron Yellow */
+}
+
+.radio-options > label:nth-child(3) {
+  background-color: #66666630; /* Medium Green */
+}
+
+.radio-options > label:nth-child(4) {
+  background-color: #64b5f680; /* Vivid Blue */
+}
+
+.radio-options > label:nth-child(5) {
+  background-color: #81c78480; /* Hot Pink */
+}
+
+/* ------------ */
+
+.radio-options > label:nth-child(1):has(input[type="radio"]:checked) {
+  background-color: #e57373; /* Coral Red */
+  color: #fff;
+}
+
+.radio-options > label:nth-child(2):has(input[type="radio"]:checked) {
+  background-color: #ffb74d; /* Saffron Yellow */
+  color: #fff;
+}
+
+.radio-options > label:nth-child(3):has(input[type="radio"]:checked) {
+  background-color: #666; /* Medium Green */
+  color: #fff;
+}
+
+.radio-options > label:nth-child(4):has(input[type="radio"]:checked) {
+  background-color: #64b5f6; /* Vivid Blue */
+  color: #fff;
+}
+
+.radio-options > label:nth-child(5):has(input[type="radio"]:checked) {
+  background-color: #81c784; /* Hot Pink */
+  color: #fff;
+}
+
+/* Styling for radio button inputs */
+.radio-options input[type="radio"] {
+  margin-right: 10px;
+  accent-color: inherit; /* Inherit the color of the label */
+}
+
+/*  */
+
 .question label {
   display: block;
-  margin-bottom: 10px;
   font-weight: bold;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
+input[type="radio"] {
+  margin-right: 10px;
 }
 
-.option {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 5px;
-  cursor: pointer;
-  background-color: #f9f9f9;
-}
-
-.option:hover {
-  background-color: #e1e1e1;
-}
-
-.option.selected {
-  background-color: #007bff;
-  color: #fff;
-  border-color: #007bff;
+input[type="radio"]:not(:last-of-type) {
+  margin-right: 20px;
 }
 
 button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
   font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -74,14 +144,37 @@ button:hover {
   background-color: #0056b3;
 }
 
-.result {
+.hidden {
+  display: none;
+}
+
+#report {
   margin-top: 20px;
-  font-size: 18px;
-  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+#report h2 {
+  margin-top: 0;
+}
+
+#report p {
+  font-size: 16px;
   color: #333;
 }
 
-#result span {
-  color: #0056b3;
-  font-weight: bold;
+/* mobile responsive style */
+@media screen and (max-width: 900px) {
+  .container {
+    width: 90%;
+  }
+  .radio-options {
+    flex-wrap: wrap;
+  }
+  .radio-options > label {
+    width: 100%;
+    text-align: left;
+  }
 }
